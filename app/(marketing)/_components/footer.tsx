@@ -4,7 +4,10 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="fixed bottom-0 w-full p-4 border-t flex bg-slate-100">
+    <footer
+      className="fixed bottom-0 w-full p-4 border-t flex bg-slate-100"
+      data-testid="footer"
+    >
       <div className="md:max-w-screen-2xl mx-auto flex items-center w-full justify-between">
         <Logo />
         <div className="space-x-4 md:block md:w-auto flex items-center justify-between w-full">
@@ -16,7 +19,7 @@ const Footer = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
