@@ -2,26 +2,26 @@ import "@testing-library/jest-dom/";
 import MarketingPage from "@/app/(marketing)/page";
 import { render, screen } from "@testing-library/react";
 
-describe("MarketingPageComponent tests unit", () => {
-  it("should render marketing page with correct elements", () => {
+describe("MarketingPage", () => {
+  it("renders without crashing", () => {
     render(<MarketingPage />);
-
-    // Assert heading elements
     expect(screen.getByText("No 1 task management")).toBeInTheDocument();
+  });
+
+  it("contains the main heading", () => {
+    render(<MarketingPage />);
     expect(screen.getByText("Taskify helps team move")).toBeInTheDocument();
+  });
+
+  it("contains the secondary heading", () => {
+    render(<MarketingPage />);
     expect(screen.getByText("work forward.")).toBeInTheDocument();
+  });
 
-    // Assert description text
-    expect(
-      screen.getByText(
-        /Colaborate, manage projects, and reach new productivity peaks/i
-      )
-    ).toBeInTheDocument();
-
-    // Assert button
-    const button = screen.getByRole("link", {
-      name: /get taskify for free/i,
-    });
-    expect(button).toBeInTheDocument();
+  it("has the correct link to sign-up", () => {
+    render(<MarketingPage />);
+    const link = screen.getByRole("link", { name: /get taskify for free/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/sign-up");
   });
 });

@@ -3,10 +3,12 @@ import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { MobileSidebar } from "./MobileSidebar";
 
 export const Navbar = () => {
   return (
     <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
+      <MobileSidebar />
       <div className="flex items-center gap-x-4">
         <div className="hidden md:flex">
           <Logo />
@@ -23,10 +25,13 @@ export const Navbar = () => {
           size="sm"
           className="rounded-sm block md:hidden"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-4 w-4" data-testid="Plus icon" />
         </Button>
       </div>
-      <div className="ml-auto flex items-center gap-x-2">
+      <div
+        className="ml-auto flex items-center gap-x-2"
+        data-testid="Organization switcher"
+      >
         <OrganizationSwitcher
           hidePersonal
           afterCreateOrganizationUrl="/organization/:id"
@@ -52,6 +57,7 @@ export const Navbar = () => {
               },
             },
           }}
+          data-testid="User button"
         />
       </div>
     </nav>
